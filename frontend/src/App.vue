@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import Dashboard from "@/components/dashboard/index.vue";
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-
-
-  <RouterView />
+  <div v-if="$route.name == 'login' || $route.name == 'signUp'">
+    <RouterView />
+  </div>
+  <Dashboard v-else />
 </template>
 
 <style scoped>
