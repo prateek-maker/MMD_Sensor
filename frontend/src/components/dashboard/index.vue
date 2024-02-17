@@ -13,7 +13,7 @@ import { RouterLink, RouterView } from "vue-router";
       ```
     -->
 
-  <div class="min-h-full">
+  <div class="min-h-full ">
     <Header />
     <!-- <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -21,7 +21,7 @@ import { RouterLink, RouterView } from "vue-router";
         </div>
       </header> -->
     <main>
-      <div class="flex h-screen bg-[gray-100]">
+      <div class="flex h-screen  bg-[gray-100]">
         <SideBar />
         <RouterView />
       </div>
