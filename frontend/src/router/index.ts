@@ -3,6 +3,7 @@ import login from '@/components/auth/login.vue'
 import signUp from '@/components/auth/signUp.vue'
 import dashboard from  '@/components/dashboard/index.vue'
 import overview from '@/components/dashboard/overview.vue'
+import project from '@/components/dashboard/project.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -29,6 +30,11 @@ const router = createRouter({
       path: '/overview',
       name: 'overview',
       component: overview
+    },
+    { 
+      path: '/project',
+      name: 'project',
+      component: project
     }
   ]
 })

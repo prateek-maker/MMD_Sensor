@@ -1,30 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+const router = useRouter();
+function goToPage(type:any){
+  router.push({name:type})
+}
+</script>
 <template>
-  <div class="hidden md:flex h-md flex-col w-65 pt-8 pl-5 pr-3 bg-[#ede9e9]">
+  <div class="hidden md:flex h-md flex-col w-65 pb-8 pt-8 pl-5 pr-3 bg-[#ede9e9]" style="position: fixed;height: calc(100% - 65px);overflow-y: scroll;">
     <button
-      @click="$router.push('overview')"
+      @click="goToPage('overview')"
       type="button"
-      class="h-[50px] text-grey bg-[#ffffff] hover:shadow-lg shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
+      class="h-[50px] text-grey bg-[#ffffff] shadow-md hover:shadow-lg focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
-      <!-- <svg
-        class="w-4 h-4 me-2"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 8 19"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-          clip-rule="evenodd"
-        />
-      </svg> -->
       <span class="me-4 bg-primary-blue p-1 rounded-lg">
         <img src="/menu.svg" class="w-6" />
       </span>
       Overview
     </button>
-    <button
+    <button @click="goToPage('project')"
       type="button"
       class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
