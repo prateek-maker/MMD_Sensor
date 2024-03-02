@@ -6,7 +6,7 @@ function goToPage(type:any){
 }
 </script>
 <template>
-  <div class="hidden md:flex h-md flex-col w-65 pb-8 pt-8 pl-5 pr-3 bg-[#ede9e9]" style="position: fixed;height: calc(100% - 65px);overflow-y: scroll;">
+    <div class="hidden md:flex h-md flex-col w-65 pb-8 pt-8 pl-5 pr-3 bg-[#ede9e9]" style="position: fixed;height: calc(100% - 65px);overflow-y: scroll;">
     <button
       @click="goToPage('overview')"
       type="button"
