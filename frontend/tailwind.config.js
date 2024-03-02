@@ -10,7 +10,12 @@ export default {
         '3xl': '0px 2px 4px 0px rgba(29, 31, 33, 0.20)',
       },
       colors:{
-        'primary-blue': '#2773FF'
+        'primary-blue': '#2773FF',
+        'green-tint' : '#D1F6D2',
+        'primary-green': '#17C21A',
+        'stroke-grey':'#E3E8F0',
+        'grey-text': '#728095',
+        'gray-back': '#E3E8F0'
       }
     },
     screens: {
