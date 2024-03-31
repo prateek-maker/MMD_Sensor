@@ -55,7 +55,7 @@ const selectedPerson = ref(people[0]);
 </script>
 <template>
   <div class="flex flex-col flex-1 overflow-y-auto md:ml-[0] sm:ml-[0] lg:ml-[280px]">
-    <div class="p-[60px]">
+    <div style="padding: 20px 20px 0 40px">
       <div class="grid gap-4 md:grid-rows-1 sm:grid-rows-4 lg:grid-cols-4 mb-5">
         <!-- Ongoing project -->
         <div class="border-2 p-5 rounded-lg">

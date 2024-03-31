@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
+import Dropdown from "../common/dropdown.vue"
+import ListBox from "../common/listBox.vue";
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import {
+  RadioGroup,
+  RadioGroupLabel,
+  RadioGroupDescription,
+  RadioGroupOption,
+} from '@headlessui/vue'
 const users: any = ref([
   {
     project_id: "G-271",
@@ -85,6 +94,30 @@ const users: any = ref([
   },
 ]);
 const activeIndex = ref(null);
+const sortArry = ref([
+  'Date Modified',
+  'Date Created',
+  'Ascending',
+  'Descending',
+  'Tag'
+]);
+const daysArray = ref([
+    { name: 'Last 30 days' },
+    { name: 'Last 3 days' },
+    { name: 'Last 10 days' },
+    { name: 'Last 40 days' },
+    { name: 'Last 20 days' },
+    { name: 'Last 5 days' },
+  ]);
+
+const locationArray = ref([
+  { name: 'Location' },
+  { name: 'United States' },
+  { name: 'Canada' },
+  { name: 'France' },
+  { name: 'Germany' },
+]);
+
 
 const toggleDetails = (index: any) => {
   console.log(index, "ASdasdsads");
@@ -93,13 +126,13 @@ const toggleDetails = (index: any) => {
 </script>
 <template>
   <div class="flex flex-col flex-1 overflow-none md:ml-[0] sm:ml-[0] lg:ml-[280px]">
-    <div class="" style="padding: 60px 60px 0 60px">
+    <div class="" style="padding: 20px 140px 0px 60px">
       <h1 class="text-2xl font-bold">Projects</h1>
       <div
-        class="flex justify-between flex-row gap-20 mt-3 md:flex-col sm:flex-col lg:flex-row"
+        class="flex justify-between flex-row gap-20 mt-3 md:flex-col sm:flex-col lg:flex-row align-middle"
       >
         <div class="flex">
-          <select
+          <!-- <select
             id="countries"
             class="border drop-shadow w-32 mr-5 border-stroke-grey text-sm rounded-md block p-2.5"
           >
@@ -108,8 +141,11 @@ const toggleDetails = (index: any) => {
             <option value="CA">Canada</option>
             <option value="FR">France</option>
             <option value="DE">Germany</option>
-          </select>
-          <select
+          </select> -->
+          <div class="">
+            <ListBox :list="daysArray"/>
+          </div>
+          <!-- <select
             id="countries"
             class="border mr-5 drop-shadow border-stroke-grey text-sm rounded-md block w-32 p-2.5"
           >
@@ -118,30 +154,107 @@ const toggleDetails = (index: any) => {
             <option value="CA">Canada</option>
             <option value="FR">France</option>
             <option value="DE">Germany</option>
-          </select>
+          </select> -->
+          <div class="mr-4">
+            <Popover v-slot="{ open }" class="relative">
+              <PopoverButton
+                class="border h-[42px]  border-stroke-grey group inline-flex items-center rounded-md text-sm  px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+              >
+                <span>Location</span>
+                <ChevronDownIcon
+                  class="ml-2 h-5 w-5 transition duration-150 ease-in-out "
+                  aria-hidden="true"
+                />
+              </PopoverButton>
+              <PopoverPanel
+                class="absolute  bg-[#F9FDFF] left-0 origin-top-left z-10 mt-1  transform  sm:px-0 lg:max-w-3xl"
+              >
+              <div  class="z-10  bg-white rounded-lg shadow w-60 ">
+                <div class="p-3 ">
+                  <label for="input-group-search" class="sr-only">Select Area</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 end-0 flex items-center pr-2 pointer-events-none">
+                      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                    </div>
+                    <input type="text" id="input-group-search" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5" placeholder="Search user">
+                  </div>
+                </div>
+                <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+                  <li>
+                    <div class="flex items-center p-2 rounded">
+                      <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="checkbox-item-11" class="w-full ms-2 text-sm font-normal text-black rounded ">Bonnie Green</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded">
+                        <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="checkbox-item-12" class="w-full ms-2 text-sm font-normal text-black rounded">Jese Leos</label>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded">
+                      <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="checkbox-item-13" class="w-full ms-2 text-sm font-normal text-black rounded">Michael Gough</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded">
+                      <input id="checkbox-item-14" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="checkbox-item-14" class="w-full ms-2 text-sm font-normal text-black rounded ">Robert Wall</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded">
+                      <input id="checkbox-item-15" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="checkbox-item-15" class="w-full ms-2 text-sm font-normal text-black rounded ">Joseph Mcfall</label>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center p-2 rounded">
+                      <input id="checkbox-item-16" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="checkbox-item-16" class="w-full ms-2 text-sm font-normal rounded text-black">Leslie Livingston</label>
+                    </div>
+                  </li>
+                        <li>
+                    <div class="flex items-center p-2 rounded">
+                      <input id="checkbox-item-17" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <label for="checkbox-item-17" class="w-full ms-2 text-sm font-normal text-black rounded">Roberta Casas</label>
+                    </div>
+                  </li>
+                </ul>
+                  <!-- <a href="#" class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50    dark:text-red-500 ">
+                    <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                      <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z"/>
+                  </svg>
+                    Delete user
+                  </a> -->
+              </div>
+              </PopoverPanel>
+            </Popover>
+          </div>
           <div class="relative block">
             <span class="absolute inset-y-0 left-0 flex h-full items-center pl-2" style="z-index: 1;">
             <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
               <path d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"></path>
             </svg>
-          </span>
+            </span>
             <input
               type="text"
               id="first_name"
-              class="border border-stroke-grey drop-shadow text-sm rounded-md block w-96 p-2.5 focus:outline-none pl-8"
+              class="border border-stroke-grey  text-sm rounded-md block w-96 p-2.5 focus:outline-none pl-8"
               placeholder="Search in users / project name"
               required
             />
+            <!-- drop-shadow -->
           </div>
         </div>
         <div class="flex justify-end">
-          <select id="countries" class="w-14 text-sm rounded-md block mr-5">
-            <option selected>Sort</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
-          </select>
+          <div class="w-56 text-right">
+            <Dropdown :arrayData="sortArry"/>
+          </div>
           <img src="/menu-vertical.svg" height="20" width="20" class=""/>
         </div>
       </div>
@@ -175,7 +288,7 @@ const toggleDetails = (index: any) => {
             <table
               class="table-fixed w-full text-sm text-left rtl:text-right text-gray-900"
             >
-              <thead
+              <thead style="position:sticky;top:0"
                 class="text-md text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-white"
               >
                 <tr class="">
@@ -194,7 +307,7 @@ const toggleDetails = (index: any) => {
                 :key="index"
                 class="border-b border-stroke-grey"
               >
-                <tr class="bg-white hover:bg-gray-50 text-gray-500 " style="height:20px;">
+                <tr class="bg-white hover:bg-gray-50 text-gray-500 "  style="height:20px;">
                   <td class="w-4 p-4 border-r border-stroke-grey">
                     <div class="flex items-center">
                       <input
@@ -210,7 +323,7 @@ const toggleDetails = (index: any) => {
                   </td>
                   <th
                     scope="row"
-                    class="flex items-center px-6 py-4 border-r border-stroke-grey text-gray-900 whitespace-nowrap"
+                    class="flex items-center px-6 py-4  text-gray-900 whitespace-nowrap"
                   >
                     <img
                       class="w-10 h-10 rounded-full"
@@ -279,72 +392,171 @@ const toggleDetails = (index: any) => {
                   >
                     <div class="p-8">
                       <table
-                        class="table-fixed border w-full text-sm text-left rtl:text-right text-gray-900"
+                        class="border w-full text-sm text-left rtl:text-right text-gray-900"
                       >
                         <thead class="text-md text-gray-700 bg-gray-50">
                           <tr class="">
-                            <th scope="col" class="border-r border-stroke-grey px-6 py-3">
+                            <th scope="col" class="border-r border-b border-stroke-grey px-6 py-3 w-[200px]">
                               Sensor G - 71
                             </th>
-                            <th scope="col" class="px-3 py-2 border-r border-stroke-grey">
-                              Day 0 <span class="text-xs">(within 15 min)</span>
+                            <th scope="col" class="px-3 py-2 border-r border-b border-stroke-grey w-[140px]">
+                              Day 0 <span class="text-[10px]">(within 15 min)</span>
                             </th>
-                            <th scope="col" class="px-6 py-3 border-r border-stroke-grey">
-                              Day 3 (72 hours)
+                            <th scope="col" class="px-6 py-3 border-r border-b border-stroke-grey w-[140px]">
+                              Day 3 <span class="text-[10px]">(72 hours)</span>
                             </th>
-                            <th scope="col" class="px-6 py-3 border-r border-stroke-grey">
+                            <th scope="col" class="px-6 py-3 border-r border-b border-stroke-grey w-[140px]">
                               Day 7
                             </th>
-                            <th scope="col" class="px-6 py-3 border-r border-stroke-grey">
+                            <th scope="col" class="px-6 py-3 border-r border-b border-stroke-grey w-[140px]" >
                               Day 14
                             </th>
-                            <th scope="col" class="px-6 py-3 border-r border-stroke-grey">
+                            <th scope="col" class="px-6 py-3 border-r border-b border-stroke-grey w-[140px]">
                               Day 21
                             </th>
-                            <th scope="col" class="px-6 py-3">Action</th>
+                            <th scope="col" class="px-6 py-3 border-b border-stroke-grey w-[140px]">
+                              <div class="flex flex-row justify-between">
+                                Action
+                                <img src="/angle.svg" class="cursor-pointer" height="16" width="18"/>
+                              </div>
+                            </th>
                           </tr>
                         </thead>
                         <tbody
-                          v-for="(user, index) in users"
-                          :key="index"
-                          class="border-b border-stroke-grey"
+                          class="border-b border-stroke-grey text-gray-700"
                         >
-                          <tr class="bg-white hover:bg-gray-50 text-gray-500">
-                            <th scope="col" class="px-6 py-3 border-r border-stroke-grey">
-                              Temperature (0C)
+                          <tr class="bg-white hover:bg-gray-50">
+                            <th scope="col" class="px-6 py-3 border-r border-b border-stroke-grey">
+                              Temperature (<sup>0</sup>C)
                             </th>
                             <td class="px-6 py-4 border-r border-stroke-grey">
-                              <div class="flex flex-row">
-                                <div class="font-normal text-xs text-gray-500">
-                                  25.1 | 25.6
+                              <div class="flex flex-row justify-between">
+                                <div class="font-bold text-[14px]">
+                                  25.1
+                                </div>
+                                <div class="font-bold text-[14px] text-gray-200">
+                                  |
+                                </div>
+                                <div class="font-bold text-[14px]">
+                                  25.6
                                 </div>
                               </div>
                             </td>
                             <td class="px-6 py-4 border-r border-stroke-grey">
-                              <div class="flex flex-row">
-                                <div class="font-normal text-xs text-gray-500">
-                                  25.1 | 25.6
+                              <div class="flex flex-row justify-between">
+                                <div class="font-bold text-[14px]">
+                                  25.1
+                                </div>
+                                <div class="font-bold text-[14px] text-gray-200">
+                                  |
+                                </div>
+                                <div class="font-bold text-[14px]">
+                                  25.6
                                 </div>
                               </div>
                             </td>
                             <td class="px-6 py-4 border-r border-stroke-grey">
-                              <div class="flex flex-row">
-                                <div class="font-normal text-xs text-gray-500">
-                                  25.1 | 25.6
+                              <div class="flex flex-row justify-between">
+                                <div class="font-bold text-[14px]">
+                                  25.1
+                                </div>
+                                <div class="font-bold text-[14px] text-gray-200">
+                                  |
+                                </div>
+                                <div class="font-bold text-[14px]">
+                                  25.6
                                 </div>
                               </div>
                             </td>
                             <td class="px-6 py-4 border-r border-stroke-grey">
-                              <div class="flex flex-row">
-                                <div class="font-normal text-xs text-gray-500">
-                                  25.1 | 25.6
+                              <div class="flex flex-row justify-between">
+                                <div class="font-bold text-[14px]">
+                                  25.1
+                                </div>
+                                <div class="font-bold text-[14px] text-gray-200">
+                                  |
+                                </div>
+                                <div class="font-bold text-[14px]">
+                                  25.6
                                 </div>
                               </div>
                             </td>
                             <td class="px-6 py-4 border-r border-stroke-grey">
-                              <div class="flex flex-row">
-                                <div class="font-normal text-xs text-gray-500">
-                                  25.1 | 25.6
+                              <div class="flex flex-row justify-between">
+                                <div class="font-bold text-[14px]">
+                                  25.1
+                                </div>
+                                <div class="font-bold text-[14px] text-gray-200">
+                                  |
+                                </div>
+                                <div class="font-bold text-[14px]">
+                                  25.6
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-6 py-4 border-r border-stroke-grey">
+                              <div class="flex flex-row justify-between">
+                                <div class="ali">
+                                  <img src="/edit-3.svg" style="width:16px;height:16px"/>
+                                </div>
+                                <div class="font-bold text-[14px] text-gray-200">
+                                  <img src="/bell.svg" style="width:16px;height:16px"/>
+                                </div>
+                                <div class="font-bold text-[14px]">
+                                  <img src="/delete.svg" style="width:16px;height:16px"/>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr class="bg-white hover:bg-gray-50 text">
+                            <th scope="col" class="px-6 py-3 border-r border-stroke-grey">
+                              Maturity (<sup>0</sup>C-hrs)
+                            </th>
+                            <td class="px-6 py-4 border-r border-stroke-grey">
+                              <div class="text-center">
+                                <div class="font-normal text-[14px]">
+                                  25.1
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-6 py-4 border-r border-stroke-grey">
+                              <div class="text-center">
+                                <div class="font-normal text-[14px]">
+                                  25.1
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-6 py-4 border-r border-stroke-grey">
+                              <div class="text-center">
+                                <div class="font-normal text-[14px]">
+                                  25.1
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-6 py-4 border-r border-stroke-grey">
+                              <div class="text-center">
+                                <div class="font-normal text-[14px]">
+                                  25.1
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-6 py-4 border-r border-stroke-grey">
+                              <div class="text-center">
+                                <div class="font-normal text-[14px]">
+                                  25.1
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-6 py-4 border-r border-stroke-grey">
+                              <div class="flex flex-row justify-between">
+                                <div class="ali">
+                                  <img src="/edit-3.svg" style="width:16px;height:16px"/>
+                                </div>
+                                <div class="font-normal text-[14px] text-gray-200">
+                                  <img src="/bell.svg" style="width:16px;height:16px"/>
+                                </div>
+                                <div class="font-normal text-[14px]">
+                                  <img src="/delete.svg" style="width:16px;height:16px"/>
                                 </div>
                               </div>
                             </td>
@@ -443,8 +655,7 @@ const toggleDetails = (index: any) => {
   overflow-y: auto;
   display:block;
 }
-thead{
-  position:sticky;
-  top:0
+td {
+  border: 1px solid rgb(224, 223, 223);
 }
 </style>
