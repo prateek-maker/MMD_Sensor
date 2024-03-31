@@ -15,7 +15,14 @@ export default {
         'primary-green': '#17C21A',
         'stroke-grey':'#E3E8F0',
         'grey-text': '#728095',
-        'gray-back': '#E3E8F0'
+        'gray-back': '#E3E8F0',
+        'oxford-black':'#0F2744'
+      },
+      fontSize:{
+        '8size': '8px',
+        '12size': '12px',
+        '2md': '14px',
+        '3md':'20px'
       }
     },
     screens: {

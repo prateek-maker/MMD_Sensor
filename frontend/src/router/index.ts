@@ -4,6 +4,7 @@ import signUp from '@/components/auth/signUp.vue'
 import dashboard from  '@/components/dashboard/index.vue'
 import overview from '@/components/dashboard/overview.vue'
 import project from '@/components/dashboard/project.vue'
+import sensor from '@/components/dashboard/device.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -35,6 +36,11 @@ const router = createRouter({
       path: '/project',
       name: 'project',
       component: project
+    },
+    { 
+      path: '/sensor',
+      name: 'sensor',
+      component: sensor
     }
   ]
 })

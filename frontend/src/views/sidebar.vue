@@ -1,16 +1,22 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import {computed} from 'vue'
+import {useRoute} from 'vue-router'
+
 const router = useRouter();
+const route = useRoute()
 function goToPage(type:any){
   router.push({name:type})
 }
+const path = computed(() =>route.name)
 </script>
 <template>
-    <div class="hidden md:flex h-md flex-col w-65 pb-8 pt-8 pl-5 pr-3 bg-[#ede9e9]" style="position: fixed;height: calc(100% - 65px);overflow-y: scroll;">
+    <div class="hidden md:flex h-md flex-col w-65 pb-8 pt-8 pl-5 pr-3 bg-[#ede9e9]" style="position: fixed;height: calc(100% - 65px);overflow-y: auto;">
     <button
       @click="goToPage('overview')"
       type="button"
-      class="h-[50px] text-grey bg-[#ffffff] shadow-md hover:shadow-lg focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
+      :class="path=='overview'?'bg-[#ffffff] shadow-md':''"
+      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
       <span class="me-4 bg-primary-blue p-1 rounded-lg">
         <img src="/menu.svg" class="w-6" />
@@ -19,16 +25,18 @@ function goToPage(type:any){
     </button>
     <button @click="goToPage('project')"
       type="button"
-      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
+      :class="path=='project'?'bg-[#ffffff] shadow-md':''"
+      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
       <span class="me-4 bg-primary-blue p-1 rounded-lg">
         <img src="/folder.svg" class="w-6" />
       </span>
       Project
     </button>
-    <button
+    <button @click="goToPage('sensor')"
       type="button"
-      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
+      :class="path=='sensor'?'bg-[#ffffff] shadow-md':''"
+      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
       <span class="me-4 bg-primary-blue p-1 rounded-lg">
         <img src="/graph.svg" class="w-6" />
@@ -37,21 +45,12 @@ function goToPage(type:any){
     </button>
     <button
       type="button"
-      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
+      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
       <span class="me-4 bg-primary-blue p-1 rounded-lg">
         <img src="/graph.svg" class="w-6" />
       </span>
       Graph
-    </button>
-    <button
-      type="button"
-      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
-    >
-      <span class="me-4 bg-primary-blue p-1 rounded-lg">
-        <img src="/stack.svg" class="w-6" />
-      </span>
-      File Export
     </button>
 
     <h5 class="mt-10 font-bold mb-6">Account Page</h5>
