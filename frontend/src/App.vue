@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Dashboard from "@/components/dashboard/index.vue";
+import Dashboard from "@/components/pages/index.vue";
 import { RouterLink, RouterView } from "vue-router";
 </script>
 
@@ -72,4 +72,5 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
+
 </style>

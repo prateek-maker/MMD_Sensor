@@ -1,9 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import login from '@/components/auth/login.vue'
 import signUp from '@/components/auth/signUp.vue'
-import dashboard from  '@/components/dashboard/index.vue'
-import overview from '@/components/dashboard/overview.vue'
-import project from '@/components/dashboard/project.vue'
+import dashboard from  '@/components/pages/index.vue'
+import overview from '@/components/pages/overview.vue'
+import project from '@/components/pages/project.vue'
+import sensor from '@/components/pages/device.vue'
+import details from '@/components/pages/details.vue'
+import graph from '@/components/pages/graph.vue'
+import user from '@/components/pages/user.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -35,6 +40,26 @@ const router = createRouter({
       path: '/project',
       name: 'project',
       component: project
+    },
+    { 
+      path: '/sensor',
+      name: 'sensor',
+      component: sensor
+    },
+    { 
+      path: '/details',
+      name: 'details',
+      component: details
+    },
+    { 
+      path: '/graph',
+      name: 'graph',
+      component: graph
+    },
+    { 
+      path: '/users',
+      name: 'users',
+      component: user
     }
   ]
 })
