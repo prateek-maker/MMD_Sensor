@@ -1,6 +1,8 @@
 <template>
   <div class="flex flex-col flex-1 overflow-y-auto md:ml-[0] sm:ml-[0] lg:ml-[280px]">
-    <div style="padding: 20px 140px 0 40px">
+    <div
+      style="height: calc(100vh - 66px); overflow-y: auto; padding: 20px 140px 20px 40px"
+    >
       <div class="flex flex-row justify-between pb-2 items-center">
         <h1 class="text-2xl font-bold">Sensor Details</h1>
         <img class="w-6 h-6" src="/shuffle.svg" alt="Jese image" />
@@ -49,11 +51,11 @@
                       >{{ person.name }}</span
                     >
                     <!-- <span
-                        v-if="selected"
-                        class="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600"
-                        >
-                        <CheckIcon class="h-5 w-5" aria-hidden="true" />
-                        </span> -->
+                          v-if="selected"
+                          class="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600"
+                          >
+                          <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                          </span> -->
                   </li>
                 </ListboxOption>
               </ListboxOptions>
@@ -144,109 +146,63 @@
           </div>
         </div>
       </div>
-      <div class="">
-        <div
-          id="accordion-color"
-          data-accordion="collapse"
-          data-active-classes="bg-blue-100 text-blue-600"
-        >
-          <h2 id="accordion-color-heading-1">
-            <button
-              type="button"
-              class="flex items-center justify-between w-full p-5 font-medium rtl:text-right border border-b-0 border-gray-200 rounded-t-xl focus:outline-none hover:bg-blue-100"
-              data-accordion-target="#accordion-color-body-1"
-              aria-expanded="true"
-              aria-controls="accordion-color-body-1"
-            >
-              <span>What is Flowbite?</span>
-              <svg
-                data-accordion-icon
-                class="w-3 h-3 rotate-180 shrink-0"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          <div
-            id="accordion-color-body-1"
-            class="hidden"
-            aria-labelledby="accordion-color-heading-1"
-          >
-            <div class="p-5 border border-b-0 border-gray-200">
-              <p class="mb-2 text-gray-500 dark:text-gray-400">
-                Flowbite is an open-source library of interactive components built on top
-                of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.
-              </p>
-              <p class="text-gray-500 dark:text-gray-400">
-                Check out this guide to learn how to
-                <a
-                  href="/docs/getting-started/introduction/"
-                  class="text-blue-600 dark:text-blue-500 hover:underline"
-                  >get started</a
-                >
-                and start developing websites even faster with components on top of
-                Tailwind CSS.
-              </p>
+      <div class="mt-10">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="border-0 rounded-lg drop-shadow bg-white text-center">
+            <p class="py-3 border border-b-2 font-medium">Sensor F1-71</p>
+            <p class="pt-3 text-2md font-semibold">Temperature (<sup>o</sup>C)</p>
+            <p class="pb-3 text-4md font-semibold">52.4</p>
+            <div class="pb-1 flex flex-row justify-center gap-16 text-2md text-grey-text">
+                <p><span class="font-semibold">29.1</span> Min.</p>
+                <p><span class="font-semibold">29.1</span> Min.</p>
+            </div>
+            <p class="pt-3 text-2md font-semibold">Maturity (<sup>o</sup>C-hrs)</p>
+            <p class="mb-3 text-[40px] font-bold text-primary-green">9553</p>
+            <div class="flex-row inline-flex items-center border border-1 text-grey-text rounded px-3 justify-center text-2md bg-[#F3F5F9] h-[32px] w-fit">
+                <p>Pending Time Jan 24, 2024 at 6:15 PM</p>
+            </div>
+            <p class="pt-4 text-2md font-semibold">Strength (MPa)</p>
+            <p class="text-4md font-semibold">60.20</p>
+            <div class="my-4 flex flex-row items-center border border-1 text-grey-text rounded px-3 justify-center text-2md bg-[#F3F5F9] h-[32px] ">
+                <p>Pouring Time : Dec 12, 2023 at 6:15:30 PM</p>
             </div>
           </div>
-          <h2 id="accordion-color-heading-2">
-            <button
-              type="button"
-              class="flex items-center justify-between w-full p-5 font-medium rtl:text-right border border-gray-200 focus:outline-none hover:bg-blue-100"
-              data-accordion-target="#accordion-color-body-2"
-              aria-expanded="false"
-              aria-controls="accordion-color-body-2"
-            >
-              <span>Is there a Figma file available?</span>
-              <svg
-                data-accordion-icon
-                class="w-3 h-3 rotate-180 shrink-0"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          <div
-            id="accordion-color-body-2"
-            class="hidden"
-            aria-labelledby="accordion-color-heading-2"
-          >
-            <div class="p-5 border border-b-1 border-gray-200">
-              <p class="mb-2 text-gray-500 dark:text-gray-400">
-                Flowbite is first conceptualized and designed using the Figma software so
-                everything you see in the library has a design equivalent in our Figma
-                file.
-              </p>
-              <p class="text-gray-500 dark:text-gray-400">
-                Check out the
-                <a
-                  href="https://flowbite.com/figma/"
-                  class="text-blue-600 dark:text-blue-500 hover:underline"
-                  >Figma design system</a
-                >
-                based on the utility classes from Tailwind CSS and components from
-                Flowbite.
-              </p>
+          <div class="border-0 rounded-lg drop-shadow bg-white text-center">
+            <p class="py-3 border border-b-2 font-medium">Sensor F1-71</p>
+            <p class="pt-3 text-2md font-semibold">Temperature (<sup>o</sup>C)</p>
+            <p class="pb-3 text-4md font-semibold">52.4</p>
+            <div class="pb-1 flex flex-row justify-center gap-16 text-2md text-grey-text">
+                <p><span class="font-semibold">29.1</span> Min.</p>
+                <p><span class="font-semibold">29.1</span> Min.</p>
+            </div>
+            <p class="pt-3 text-2md font-semibold">Maturity (<sup>o</sup>C-hrs)</p>
+            <p class="mb-3 text-[40px] font-bold text-primary-green">9553</p>
+            <div class="flex-row inline-flex items-center border border-1 text-grey-text rounded px-3 justify-center text-2md bg-[#F3F5F9] h-[32px] w-fit">
+                <p>Pending Time Jan 24, 2024 at 6:15 PM</p>
+            </div>
+            <p class="pt-4 text-2md font-semibold">Strength (MPa)</p>
+            <p class="text-4md font-semibold">60.20</p>
+            <div class="my-4 flex flex-row items-center border border-1 text-grey-text rounded px-3 justify-center text-2md bg-[#F3F5F9] h-[32px] ">
+                <p>Pouring Time : Dec 12, 2023 at 6:15:30 PM</p>
+            </div>
+          </div>
+          <div class="border-0 rounded-lg drop-shadow bg-white text-center">
+            <p class="py-3 border border-b-2 font-medium">Sensor F1-71</p>
+            <p class="pt-3 text-2md font-semibold">Temperature (<sup>o</sup>C)</p>
+            <p class="pb-3 text-4md font-semibold">52.4</p>
+            <div class="pb-1 flex flex-row justify-center gap-16 text-2md text-grey-text">
+                <p><span class="font-semibold">29.1</span> Min.</p>
+                <p><span class="font-semibold">29.1</span> Min.</p>
+            </div>
+            <p class="pt-3 text-2md font-semibold">Maturity (<sup>o</sup>C-hrs)</p>
+            <p class="mb-3 text-[40px] font-bold text-primary-green">9553</p>
+            <div class="flex-row inline-flex items-center border border-1 text-grey-text rounded px-3 justify-center text-2md bg-[#F3F5F9] h-[32px] w-fit">
+                <p>Pending Time Jan 24, 2024 at 6:15 PM</p>
+            </div>
+            <p class="pt-4 text-2md font-semibold">Strength (MPa)</p>
+            <p class="text-4md font-semibold">60.20</p>
+            <div class="my-4 flex flex-row items-center border border-1 text-grey-text rounded px-3 justify-center text-2md bg-[#F3F5F9] h-[32px] ">
+                <p>Pouring Time : Dec 12, 2023 at 6:15:30 PM</p>
             </div>
           </div>
         </div>
@@ -256,6 +212,8 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
+import { initAccordions } from "flowbite";
 import { ref } from "vue";
 import {
   Listbox,
@@ -281,4 +239,7 @@ const sensorArr = [
 ];
 
 const selectedSensor = ref(sensorArr[0]);
+onMounted(() => {
+  initAccordions();
+});
 </script>

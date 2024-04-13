@@ -3,6 +3,10 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js"
+  ],
+  plugins: [
+    require('flowbite/plugin')
   ],
   theme: {
     extend: {
@@ -16,13 +20,19 @@ export default {
         'stroke-grey':'#E3E8F0',
         'grey-text': '#728095',
         'gray-back': '#E3E8F0',
-        'oxford-black':'#0F2744'
+        'oxford-black':'#0F2744',
+        'blue-tint': '#E9F1FF'
       },
+    //   fontFamily: {
+    //     public: ["'Public Sans', sans-serif"],
+    //     raj: ["'Rajdhani', sans-serif"],
+    // },
       fontSize:{
         '8size': '8px',
         '12size': '12px',
         '2md': '14px',
-        '3md':'20px'
+        '3md':'20px',
+        '4md': '32px'
       }
     },
     screens: {

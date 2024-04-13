@@ -43,7 +43,8 @@ const path = computed(() =>route.name)
       </span>
       Sensors
     </button>
-    <button
+    <button @click="goToPage('graph')"
+     :class="path=='graph'?'bg-[#ffffff] shadow-md':''"
       type="button"
       class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
@@ -54,9 +55,9 @@ const path = computed(() =>route.name)
     </button>
 
     <h5 class="mt-10 font-bold mb-6">Account Page</h5>
-    <button
+    <button disabled
       type="button"
-      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
+      class="h-[50px] text-grey cursor-not-allowed opacity-50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
     >
       <span class="me-4 bg-primary-blue p-1 rounded-lg">
         <img src="/user.svg" class="w-6" />
@@ -64,8 +65,9 @@ const path = computed(() =>route.name)
       Morphedo Technologies
     </button>
     <button
-      type="button"
-      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] shadow-cyan-500/50 focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-2"
+      type="button" @click="goToPage('users')"
+      :class="path=='users'?'bg-[#ffffff] shadow-md':''"
+      class="h-[50px] text-grey hover:shadow-lg hover:bg-[#ffffff] focus:outline-none focus:font-medium rounded-lg text-sm px-3 py-2.5 text-center inline-flex items-center me-2 mb-6"
     >
       <span class="me-4 bg-primary-blue p-1 rounded-lg">
         <img src="/file.svg" class="w-6" />
@@ -86,3 +88,26 @@ const path = computed(() =>route.name)
     </div>
   </div>
 </template>
+<style>
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cecdcd;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #cecdcd;
+}
+</style>

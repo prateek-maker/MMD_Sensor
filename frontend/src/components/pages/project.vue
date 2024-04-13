@@ -26,6 +26,15 @@ const users: any = ref([
     location: { name: "Vasant Vihar", state: "Maharastra" },
     floor_sensor: "F1-02 | G-01",
     date: { date: "12/09/2023", updated: "2 Hours ago" },
+    status: "Active",
+    showDetails: false,
+  },
+  {
+    project_id: "G-271",
+    enginner_id: { name: "Rahul Gupta", address: "Technincal Director" },
+    location: { name: "Vasant Vihar", state: "Maharastra" },
+    floor_sensor: "F1-02 | G-01",
+    date: { date: "12/09/2023", updated: "2 Hours ago" },
     status: "Pending",
     showDetails: false,
   },
@@ -125,8 +134,10 @@ const toggleDetails = (index: any) => {
 };
 </script>
 <template>
-  <div class="flex flex-col flex-1 overflow-none md:ml-[0] sm:ml-[0] lg:ml-[280px]">
-    <div class="" style="padding: 20px 140px 0px 60px">
+  <div class="flex flex-col flex-1 overflow-y-auto md:ml-[0] sm:ml-[0] lg:ml-[280px]">
+    <div
+      style="height: calc(100vh - 66px); overflow-y: auto; padding: 20px 140px 20px 40px"
+    >
       <h1 class="text-2xl font-bold">Projects</h1>
       <div
         class="flex justify-between flex-row gap-20 mt-3 md:flex-col sm:flex-col lg:flex-row align-middle"
@@ -178,49 +189,49 @@ const toggleDetails = (index: any) => {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                     </svg>
                     </div>
-                    <input type="text" id="input-group-search" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none block w-full p-2.5" placeholder="Search user">
+                    <input type="text" id="input-group-search" class=" border-stroke-grey text-gray-900 text-sm rounded-lg focus:ring-0 block w-full p-2.5" placeholder="Search user">
                   </div>
                 </div>
                 <ul class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
                   <li>
                     <div class="flex items-center p-2 rounded">
-                      <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <input id="checkbox-item-11" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0 ">
                       <label for="checkbox-item-11" class="w-full ms-2 text-sm font-normal text-black rounded ">Bonnie Green</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded">
-                        <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <input checked id="checkbox-item-12" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 ">
                         <label for="checkbox-item-12" class="w-full ms-2 text-sm font-normal text-black rounded">Jese Leos</label>
                       </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded">
-                      <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <input id="checkbox-item-13" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 ">
                       <label for="checkbox-item-13" class="w-full ms-2 text-sm font-normal text-black rounded">Michael Gough</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded">
-                      <input id="checkbox-item-14" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <input id="checkbox-item-14" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 ">
                       <label for="checkbox-item-14" class="w-full ms-2 text-sm font-normal text-black rounded ">Robert Wall</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded">
-                      <input id="checkbox-item-15" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <input id="checkbox-item-15" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 ">
                       <label for="checkbox-item-15" class="w-full ms-2 text-sm font-normal text-black rounded ">Joseph Mcfall</label>
                     </div>
                   </li>
                   <li>
                     <div class="flex items-center p-2 rounded">
-                      <input id="checkbox-item-16" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <input id="checkbox-item-16" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 ">
                       <label for="checkbox-item-16" class="w-full ms-2 text-sm font-normal rounded text-black">Leslie Livingston</label>
                     </div>
                   </li>
                         <li>
                     <div class="flex items-center p-2 rounded">
-                      <input id="checkbox-item-17" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                      <input id="checkbox-item-17" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 ">
                       <label for="checkbox-item-17" class="w-full ms-2 text-sm font-normal text-black rounded">Roberta Casas</label>
                     </div>
                   </li>
@@ -244,7 +255,7 @@ const toggleDetails = (index: any) => {
             <input
               type="text"
               id="first_name"
-              class="border border-stroke-grey  text-sm rounded-md block w-96 p-2.5 focus:outline-none pl-8"
+              class=" border-stroke-grey text-sm rounded-md block w-96 p-2.5  pl-8 focus:outline-none"
               placeholder="Search in users / project name"
               required
             />
@@ -651,11 +662,18 @@ const toggleDetails = (index: any) => {
   animation-fill-mode: forwards;
 }
 .table-wrp  {
-  max-height: 53vh;
+  /* max-height: 53vh; */
+  max-height: calc(100vh - 51px);
   overflow-y: auto;
   display:block;
 }
 td {
   border: 1px solid rgb(224, 223, 223);
+}
+[type=text]:focus {
+  --tw-ring-color: unset !important;
+  --tw-ring-offset-shadow: unset !important;
+  --tw-ring-shadow: unset !important;
+  border-color: rgb(227 232 240 / var(--tw-border-opacity)) !important;
 }
 </style>
