@@ -402,7 +402,7 @@
           class="flex min-h-full items-center justify-center p-4 text-center"
         >
             <DialogPanel
-              class="w-[788px] h-[550px] transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="w-[788px] h-[550px] transform overflow-hidden rounded-md bg-white p-6 text-left align-middle shadow-xl transition-all"
             >
               <DialogTitle
                 as="h3"
@@ -421,21 +421,63 @@
                             <label for="last_name" class="block mb-2 text-[16px] text-[#555555] font-medium ">Last name</label>
                             <input type="text" id="last_name"  class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Doe" required />
                         </div>
-                        <div>
-                          <label for="email" class="block mb-2 text-[16px] text-[#555555] font-medium ">Email address</label>
-                          <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="john.doe@company.com" required />
-                        </div> 
-                        <div>
+                        <div class="flex flex-col relative">
+                          <label for="" class="block mb-2 text-[16px] text-[#555555] font-medium ">Email Id</label>
+                          <div class="relative">
+                            <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="john.doe@company.com" required />
+                            <img
+                              src="/Mail-Button-icon.svg"
+                              alt="Image"
+                              class="absolute right-0 top-[-1px] h-11 w-[2.55rem]"
+                            />
+                          </div>
+                        </div>
+                        <!-- <div>
                             <label for="phone" class="block mb-2 text-[16px] text-[#555555] font-medium ">Phone number</label>
                             <input type="text" id="phone" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+                        </div> -->
+                        <div class="flex flex-col relative">
+                          <label for="password" class="block mb-2 text-[16px] text-[#555555]  font-medium ">Phone number</label>
+                          <div class="relative pl-9">
+                            <input type="text" id="phone" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-9 p-2.5 " placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+                            <!-- <img
+                              src="/password.svg"
+                              alt="Image"
+                              class="absolute left-0 top-[-1px] h-11 w-[2.55rem]"
+                            /> -->
+                            <div class="absolute left-0 top-[-1px] h-11 w-[2.55rem] ">
+                              <!-- <label for="small" class="block mb-2 text-sm font-medium text-gray-900 bg-primary-blue  "></label> -->
+                              <select id="small" v-model="countryCode" class="block h-11 w-[68px] p-2 mb-6 text-sm text-white   border-0 border-primary-blue bg-primary-blue rounded-lg focus:ring-0 focus:outline-none">
+                                <option selected>+91</option>
+                                <option value="+91">+91</option>
+                                <option value="+92">+92</option>
+                                <option value="+93">+93</option>
+                                <option value="+94">+94</option>
+                              </select>
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                            <label for="password" class="block mb-2 text-[16px] text-[#555555]  font-medium ">Password</label>
-                            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="•••••••••" required />
-                        </div> 
-                        <div>
-                            <label for="confirm_password" class="block mb-2 text-[16px] text-[#555555] font-medium ">Confirm password</label>
-                            <input type="password" id="confirm_password" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="•••••••••" required />
+                        <div class="flex flex-col relative">
+                          <label for="password" class="block mb-2 text-[16px] text-[#555555]  font-medium ">Password</label>
+                          <div class="relative">
+                            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Create new password" required />
+                            <img
+                              src="/password.svg"
+                              alt="Image"
+                              class="absolute right-0 top-[-1px] h-11 w-[2.55rem]"
+                            />
+                          </div>
+                        </div>
+                        <div class="flex flex-col relative">
+                          <label for="password" class="block mb-2 text-[16px] text-[#555555]  font-medium ">Confirm Password</label>
+                          <div class="relative">
+                            <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Rewrite the password" required />
+                            <img
+                              src="/password.svg"
+                              alt="Image"
+                              class="absolute right-0 top-[-1px] h-11 w-[2.55rem]"
+                            />
+                          </div>
                         </div> 
                         <div>
                             <label for="company" class="block mb-2 text-[16px] text-[#555555] font-medium ">Company</label>
@@ -603,6 +645,7 @@ function closeModal() {
 function openModal() {
   isOpen.value = true
 }
+const countryCode = ref('+91')
 </script>
 <style>
 .open-details {
@@ -631,5 +674,33 @@ td {
   --tw-ring-offset-shadow: unset !important;
   --tw-ring-shadow: unset !important;
   border-color: rgb(227 232 240 / var(--tw-border-opacity)) !important;
+}
+select:not([size]) {
+  background-image: url('/angle-down-white.svg');
+  background-position: right .50rem center;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  padding-right: 0px;
+  border : 1px solid white
+}
+select option {
+  margin: 40px;
+  background: transparent;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+option:not(:checked) { 
+  color: black; background: #fff; 
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #f3969a;
+}
+
+/*checked color*/
+.dropdown-item.active {
+    background-color: #33e2ea;
 }
 </style>
